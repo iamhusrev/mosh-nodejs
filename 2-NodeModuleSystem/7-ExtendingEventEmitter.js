@@ -1,20 +1,10 @@
-const EventEmitter = require('node:events');
+const EventEmitter = require("events");
 
-class MyEmitter extends EventEmitter {}
+const Logger = require("./1-Logger");
 
-const myEmitter = new MyEmitter();
-myEmitter.on('event', () => {
-  console.log('an event occurred!');
+const logger = new Logger();
+logger.on("event", (arg) => {
+  console.log("Event with argument", arg);
 });
-myEmitter.emit('event');
 
-
-
-myEmitter.on('event', (arg) => {
-  console.log('Event with argument', arg);
-}
-);
-
-myEmitter.emit('event', { id: 1, url: 'http://mylogger.io' });
-
-
+logger.log("message");
